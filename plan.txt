@@ -1,0 +1,40 @@
+DungeonCharacter (base - abstract)
+** contains instance variables that any character in the game will have -- protected access is ok (NO public access allowed!)
+- name - String
+- hit points (how much damage a character can take before it expires) - integer
+- attack speed - integer (1 is slowest)
+- damage range (minimum and maximum amount of damage a character can do on an
+attack) - two integers
+- chance to hit opponent when attacking - double o anything else you deem necessary
+** constructor to initialize instance variables
+￼￼￼￼￼￼￼￼￼￼￼￼
+** get and set methods as you deem necessary
+** an attack method
+-first checks if character can attack (based on chance to hit)
+- if it can, a hit in range of minimum to maximum damage is generated and applied to
+opponent -- user should be informed of what happens
+- if it cannot, a message should be displayed that says the attack failed
+
+Hero (derived from DungeonCharacter -- Hero is also abstract)
+** contains instance variables that any hero should have
+- chance to block (a Hero has a chance to block any attack by a Monster -- this should be
+checked after the Monster has attacked and hit points are about to be removed from the
+Hero) - double
+- number of turns in round (number of attacks/special operations a Hero gets to perform
+per round -- based on Hero attack speed versus Monster attack speed - if Hero is twice
+as fast then s/he gets two turns, three times as fast gets three turns, etc.) - integer o anything else you deem necessary
+** constructor - should call base constructor, too
+** a method to get name of character from user -- should be invoked in constructor after base
+constructor
+** get, set, and any other methods (this includes overridden ones) you deem necessary
+
+
+Monster (derived from DungeonCharacter -- abstract)
+** contains instance variables that any Monster should have
+o chance to heal (a Monster has a chance to heal after any attack that causes a loss of hit
+points -- this should be checked after the Monster has been attacked and hit points have
+been lost -- note that if the hit points lost kill the Monster, it cannot heal itself!) - double o minimum and maximum points a monster can heal itself - two integers
+o anything else you deem necessary
+** constructor - should call base constructor, too
+** get, set, and any other methods (this includes overridden ones) you deem necessary
+** a heal method that is based on chance to heal and then range of heal points for monster
