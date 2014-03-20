@@ -6,8 +6,8 @@ public class apptester
 	{
 		Scanner user = new Scanner(System.in);
 		Game game = new Game(user);
-		game.play_round();
+		game.play_round(user);
 
-		System.out.println("played a game");	
+	
 	}
 }

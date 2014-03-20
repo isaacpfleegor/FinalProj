@@ -49,7 +49,7 @@ public abstract class Monster extends DungeonCharacter
 		double chance = (get_attack_chance() * 100);
 
 		int val = (Math.abs(rand.nextInt())) % 100 + 1;
-		System.out.println("    monster attack chance: " +chance+ " val : "+ val + "\n");
+		System.out.println(get_name() + " attack chance: " +chance+ " val : "+ val + "\n");
 		//if we get cal within chance to block range
 		if( val <= chance) 
 			return true;

@@ -1,0 +1,4 @@
+todo:
+
+-allow the user to choose a character and have the program randomly randomly choose a monster
+-add special ablities to characters!

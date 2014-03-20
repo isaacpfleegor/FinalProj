@@ -40,7 +40,7 @@ public abstract class Hero extends DungeonCharacter
 		double chance = (_block_chance * 100);
 		int val = (Math.abs(rand.nextInt())) % 100 + 1;
 
-		System.out.println("hero block chance is " + chance + " and val is " + val + "\n");
+		System.out.println(get_name() + " block chance is " + chance + " and val is " + val + "\n");
 		//if we get cal within chance to block range
 		if( val <= chance) 
 			return true;
@@ -53,7 +53,7 @@ public abstract class Hero extends DungeonCharacter
 
 		double chance = (get_attack_chance() * 100);
 		int val = (Math.abs(rand.nextInt())) % 100 + 1;
-		System.out.println("hero attack chance is " + chance + " and val is " + val + "\n");
+		System.out.println(get_name() + " hero attack chance is " + chance + " and val is " + val + "\n");
 		//if we get cal within chance to block range
 		if( val <= chance) 
 			return true;

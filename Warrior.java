@@ -28,15 +28,9 @@ public class Warrior extends Hero
 		return super.toString();
 	}
 
-public void attack(Monster enemy)
-{
-	super.attack(enemy);
-}
-	/*public boolean is_alive()
+	public void attack(Monster enemy)
 	{
-		if (super.get_hit_points() > 0)
-			return true;
-		return false;
+		super.attack(enemy);
+	}
 
-	} */
 }
