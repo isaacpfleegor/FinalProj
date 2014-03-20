@@ -5,7 +5,9 @@ public class apptester
 	public static void main(String[] args)
 	{
 		Scanner user = new Scanner(System.in);
-		DungeonCharacter me = new Warrior(user);
-		System.out.println(me);	
+		Game game = new Game(user);
+		game.play_round();
+
+		System.out.println("played a game");	
 	}
 }

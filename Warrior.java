@@ -25,11 +25,18 @@ public class Warrior extends Hero
 
 	public String toString()
 	{
-		String display = "";
-		display += "name : " + super.get_name() + "\n";
-		display += "hp: " + super.get_hit_points() + "\n";
-		display += "attack speed: " + super.get_attack_speed() + "\n";
-		display+= "block chance: " + super.get_block_chance() + "\n";
-		return display;
+		return super.toString();
 	}
+
+public void attack(Monster enemy)
+{
+	super.attack(enemy);
+}
+	/*public boolean is_alive()
+	{
+		if (super.get_hit_points() > 0)
+			return true;
+		return false;
+
+	} */
 }

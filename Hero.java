@@ -12,11 +12,6 @@ public abstract class Hero extends DungeonCharacter
 		super(user);
 		_num_turns = 0; //setting inital val to 0, will be set based on opponent in attack method
 
-		//we should be able to inherit all of the methods from the super class
-		//for the derived classes
-		//we have access to the private members through mutator methods.
-		//the members are part of the derived class, but can only be set or accessed
-		//through getters and setters
 	}
 	public double get_block_chance(){return _block_chance;}
 	public int get_num_turns(){return _num_turns;}
@@ -30,7 +25,10 @@ public abstract class Hero extends DungeonCharacter
 		if(turns < 1)
 			_num_turns = 1;
 		else
+		{
 			_num_turns = turns;
+			System.out.println(get_name() + " gets " + (_num_turns - 1) + " extra turns this round");
+		}
 		
 	}
 	//should call this method in monster's attack method
@@ -41,6 +39,8 @@ public abstract class Hero extends DungeonCharacter
 
 		double chance = (_block_chance * 100);
 		int val = (Math.abs(rand.nextInt())) % 100 + 1;
+
+		System.out.println("hero block chance is " + chance + " and val is " + val + "\n");
 		//if we get cal within chance to block range
 		if( val <= chance) 
 			return true;
@@ -53,6 +53,7 @@ public abstract class Hero extends DungeonCharacter
 
 		double chance = (get_attack_chance() * 100);
 		int val = (Math.abs(rand.nextInt())) % 100 + 1;
+		System.out.println("hero attack chance is " + chance + " and val is " + val + "\n");
 		//if we get cal within chance to block range
 		if( val <= chance) 
 			return true;
@@ -61,23 +62,30 @@ public abstract class Hero extends DungeonCharacter
 	}
 	//do we want to make attack method abstract?
 	//will want to override attack method for special attacks
-	public void attack(DungeonCharacter enemy)
+	public void attack(Monster enemy)
 	{
 		set_num_turns(enemy);
 
-		int attack_val = Math.abs(rand.nextInt()) % (get_max_damage() - get_min_damage()) + get_min_damage() + 1; //should be in range of attack values
-
-
 		for(int i = 0; i < _num_turns; i++)
 		{
+			int attack_val = Math.abs(rand.nextInt()) % (get_max_damage() - get_min_damage()) + get_min_damage() + 1; //should be in range of attack values
+			//System.out.println("hero attack val "+ attack_val);
+
 			if(attack_attempt())//if returns true
 			{
 				//subtract attack from enemy hit points and apply
+				System.out.println(get_name() + " ATTACKS for " + attack_val + "\n");
 				enemy.set_hit_points(enemy.get_hit_points() - attack_val);
+			}
+			else
+			{
+				System.out.println(get_name() + " failed in attacking! \n");
 			}
 
 		}
-
-
 	}
-}
+
+
+
+
+}//end class

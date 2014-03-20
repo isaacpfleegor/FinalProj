@@ -42,9 +42,17 @@ public abstract class DungeonCharacter
 	public boolean is_alive()
 	{
 		if (_hit_points > 0)
+		{
 			return true;
+		}
+
+		System.out.println(_name + " is dead!!");
 		return false;
 	}
+	//public abstract void attack(DungeonCharacter enemy); //must define this is subclass
+	public String toString()
+	{
+		return _name + " has " + _hit_points + " hit points";
 
-	public abstract void attack(DungeonCharacter enemy); //must define this is subclass
+	}
 }

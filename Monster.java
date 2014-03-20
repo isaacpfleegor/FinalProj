@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Monster extends DungeonCharacter
+public abstract class Monster extends DungeonCharacter
 {
 	//members:
 	
@@ -8,7 +8,7 @@ public class Monster extends DungeonCharacter
 	private int _num_turns;
 	private int _heal_min;
 	private int _heal_max;
-	//does static mean it will only have one Scanner for all Monster instances?
+
 	public static Random rand = new Random();//for block attempts
 	//methods:
 	public Monster(Scanner user)
@@ -16,13 +16,12 @@ public class Monster extends DungeonCharacter
 		super(user);
 		_num_turns = 1; //setting inital val to 0, will be set based on opponent in attack method
 
-		//we should be able to inherit all of the methods from the super class
-		//for the derived classes
-		//we have access to the private members through mutator methods.
-		//the members are part of the derived class, but can only be set or accessed
-		//through getters and setters
 	}
-	public void set_heal_min(int min){_heal_min = min;}
+	public void set_heal_range(int max, int min)
+	{
+		_heal_max = max;
+		_heal_min = min;
+	}
 
 	public void set_heal_max(int max){_heal_max = max;}
 
@@ -48,7 +47,9 @@ public class Monster extends DungeonCharacter
 		//need to be able to check for all hero classes
 
 		double chance = (get_attack_chance() * 100);
+
 		int val = (Math.abs(rand.nextInt())) % 100 + 1;
+		System.out.println("    monster attack chance: " +chance+ " val : "+ val + "\n");
 		//if we get cal within chance to block range
 		if( val <= chance) 
 			return true;
@@ -56,36 +57,56 @@ public class Monster extends DungeonCharacter
 		return false;
 	}
 //we can pass in a Hero pointer because monsters only fight Heroes
-	public void attack(DungeonCharacter enemy)
+	public void attack(Hero enemy)
 	{
 		//will not perform attack if no hit points
+		//i.e the character is dead
 		if(get_hit_points() < 1)
 			return;
-		//monster has chance to heal
+		//monster has chance to hea
+		
 		if(heal_attempt())
 		{
 			int heal_val = Math.abs(rand.nextInt()) % (_heal_max - _heal_min) + _heal_min + 1;
-			System.out.println("heal val is " + heal_val);
+			//System.out.println("heal val is " + heal_val);
+			System.out.println(get_name() + " has HEALED by " + heal_val + "hp!\n" );
 			set_hit_points(get_hit_points() + heal_val);
 		}
 
+	int attack_val = Math.abs(rand.nextInt()) % (get_max_damage() - get_min_damage()) + get_min_damage() + 1; //should be in range of attack values
 
-		int attack_val = Math.abs(rand.nextInt()) % (get_max_damage() - get_min_damage()) + get_min_damage() + 1; //should be in range of attack values
+		if(attack_attempt())//if returns true
+		{ // polymorphism question: can i call this on a DungeonCharacter pointer?
+			//or does this need to called on specific subclass		
 
-		System.out.println("attack value is " + attack_val);
-
-		for(int i = 0; i < _num_turns; i++)
-		{
-			if(attack_attempt())//if returns true
-			{ // polymorphism question: can i call this on a DungeonCharacter pointer?
-				//or does this need to called on specific subclass		
-				if(!enemy.block_attempt()) 
-				{
-					enemy.set_hit_points(enemy.get_hit_points() - attack_val);
-				}
+			if(!enemy.block_attempt()) 
+			{
+				System.out.println(get_name() + " ATTACKS for " + attack_val + "\n");
+				enemy.set_hit_points(enemy.get_hit_points() - attack_val);
 			}
+			else
+			{
+				System.out.println(get_name() + " attacked, but was BLOCKED!! \n");
+			}
+
 		}
+		else
+		{
+			System.out.println(get_name() + " failed in attack! \n");
+		}
+	}//end attack method
 
-	}
+}//end class
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
