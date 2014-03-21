@@ -1,11 +1,7 @@
 todo:
 
 -allow the user to choose a character and have the program randomly randomly choose a monster
--add special ablities to characters!
 
---need to make sure that we don't ask for another round if the character is dead
-
---ask the user if they would like to attempt a special ability during the round
--special ability should use turn
-
---incorporate ability or attack into turn method!
+//there was a problem calling a sub-class method from a parent pointer... Why is this ?
+--This can be avoided if we call an astract class from the Monster or Hero class, but is the best way to 
+deal with this? 

@@ -102,6 +102,8 @@ public abstract class Hero extends DungeonCharacter
 
 //every character needs to override the special method!
 		public abstract void special(Monster enemy);
+
+		public abstract void take_turn(Monster enemy, Scanner user);
 	
 
 }//end class

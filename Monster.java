@@ -111,6 +111,7 @@ public abstract class Monster extends DungeonCharacter
 		}
 	}//end attack method
 	public abstract void special(Hero enemy);
+	public abstract void take_turn(Hero enemy, Scanner user);
 }//end class
 
 

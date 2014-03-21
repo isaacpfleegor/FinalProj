@@ -18,7 +18,7 @@ public abstract class DungeonCharacter
 	//set the character's name  //should I pass in the Scanner user?
 	public void set_name(Scanner user)
 	{
-		System.out.print("Enter your character's name:  ");
+		System.out.print("Enter character's name:  ");
 		_name = user.nextLine();
 	}
 	public void set_hit_points(int hp){_hit_points = hp;}
