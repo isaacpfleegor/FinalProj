@@ -2,3 +2,10 @@ todo:
 
 -allow the user to choose a character and have the program randomly randomly choose a monster
 -add special ablities to characters!
+
+--need to make sure that we don't ask for another round if the character is dead
+
+--ask the user if they would like to attempt a special ability during the round
+-special ability should use turn
+
+--incorporate ability or attack into turn method!

@@ -2,11 +2,13 @@ import java.util.*;
 
 public class Game
 {
-	Hero _warrior;
-	Monster _ogre;
+	Warrior _warrior;
+	Ogre _ogre;
 
 	public Game(Scanner user)
 	{
+
+		
 		//System.out.println("Enter the type of character you want to play as");
 		//System.out.print("")
 		_warrior = new Warrior(user);
@@ -23,10 +25,10 @@ public class Game
 		{
 			System.out.println("Round " + round + "\n");
 
-			_warrior.attack(_ogre);
-			_ogre.attack(_warrior);
+			_warrior.take_turn(_ogre, user);
+			_ogre.take_turn(_warrior, user);
 			// tells us the outcome of the round
-			System.out.println("");
+			System.out.println("\n");
 
 			System.out.println(_warrior);
 			System.out.println(_ogre);

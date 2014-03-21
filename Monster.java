@@ -8,6 +8,7 @@ public abstract class Monster extends DungeonCharacter
 	private int _num_turns;
 	private int _heal_min;
 	private int _heal_max;
+	private double _special_chance;
 
 	public static Random rand = new Random();//for block attempts
 	//methods:
@@ -28,6 +29,8 @@ public abstract class Monster extends DungeonCharacter
 	public double get_heal_chance(){return _heal_chance;}
 
 	public void set_heal_chance(double chance){_heal_chance = chance;}
+
+	public void set_special_chance(double chance){_special_chance = chance;}
 
 	public boolean heal_attempt()
 	{
@@ -56,13 +59,25 @@ public abstract class Monster extends DungeonCharacter
 
 		return false;
 	}
+
+	public boolean special_attempt()
+	{
+		//need to be able to check for all hero classes
+
+		double chance = (_special_chance * 100);
+		int val = (Math.abs(rand.nextInt())) % 100 + 1;
+		System.out.println(get_name() + " special chance is " + chance + " and val is " + val + "\n");
+		//if we get cal within chance to block range
+		if( val <= chance) 
+			return true;
+
+		return false;
+	}
+
 //we can pass in a Hero pointer because monsters only fight Heroes
 	public void attack(Hero enemy)
 	{
-		//will not perform attack if no hit points
-		//i.e the character is dead
-		if(get_hit_points() < 1)
-			return;
+
 		//monster has chance to hea
 		
 		if(heal_attempt())
@@ -95,7 +110,7 @@ public abstract class Monster extends DungeonCharacter
 			System.out.println(get_name() + " failed in attack! \n");
 		}
 	}//end attack method
-
+	public abstract void special(Hero enemy);
 }//end class
 
 
