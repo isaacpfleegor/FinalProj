@@ -2,17 +2,17 @@ import java.util.*;
 
 public class Gremlin extends Monster
 {
-	private static final int HP = 70
-	private static final int ATTACK_SPEED = 5
-	private static final double CHANCE_HIT = 0.8
-	private static final int MIN_DAMAGE = 15
-	private static final int MAX_DAMAGE = 30
+	private static final int HP = 70;
+	private static final int ATTACK_SPEED = 5;
+	private static final double CHANCE_HIT = 0.8;
+	private static final int MIN_DAMAGE = 15;
+	private static final int MAX_DAMAGE = 30;
 	private static final int MAX_HEAL = 40;
-	private static final int MIN_HEAL = 20
-	private static final double HEAL_CHANCE = 0.4 //4 percent
+	private static final int MIN_HEAL = 20;
+	private static final double HEAL_CHANCE = 0.4; //4 percent
 	private static final double SPECIAL_CHANCE = 0.3;
-	private static final int SPECIAL_ATTACK_MAX = 150
-	private static final int SPECIAL_ATTACK_MIN = 100
+	private static final int SPECIAL_ATTACK_MAX = 150;
+	private static final int SPECIAL_ATTACK_MIN = 100;
 	public Gremlin(Scanner user)
 	{
 		super(user);
@@ -77,7 +77,7 @@ public class Gremlin extends Monster
 			int attack_val = Math.abs(rand.nextInt()) % (SPECIAL_ATTACK_MAX - SPECIAL_ATTACK_MIN) + SPECIAL_ATTACK_MIN + 1;
 
 			System.out.println(get_name() + " pulls a chicken out of his super special Gremlin bag and throws it at you for " + attack_val + "damage!\n");
-			_hero.set_hit_points(get_hit_points() - attack_val);
+			enemy.set_hit_points(get_hit_points() - attack_val);
 		}
 		else
 		{
