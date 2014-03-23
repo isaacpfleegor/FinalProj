@@ -60,10 +60,10 @@ public void special(Monster enemy)
 {
 	if(special_attempt()) //if returns true
 			{
-				int attack_val = Math.abs(rand.nextInt()) % (SPECIAL_DAMAGE_MAX - SPECIAL_DAMAGE_MIN) + SPECIAL_DAMAGE_MIN + 1;
+				int heal_val = Math.abs(rand.nextInt()) % (SPECIAL_DAMAGE_MAX - SPECIAL_DAMAGE_MIN) + SPECIAL_DAMAGE_MIN + 1;
 
-				System.out.println(get_name() + " uses SPECIAL MOVE -- HEAL and HEAL's SELF for " + attack_val + "\n");
-				set_hit_points(get_hp() + attack_val);
+				System.out.println(get_name() + " uses SPECIAL MOVE -- HEAL and HEAL's SELF for " + heal_val + "\n");
+				set_hit_points(get_hit_points() + heal_val);
 			}
 			else
 			
