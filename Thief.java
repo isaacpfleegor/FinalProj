@@ -64,6 +64,7 @@ public void special(Monster enemy)
 				System.out.println(get_name() + " performs SURPRISE ATTACK! ");
 				attack(enemy);
 				System.out.println(get_name() + " gets an extra turn with special");
+				_count--;
 			}
 			else
 			{
