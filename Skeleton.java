@@ -11,7 +11,7 @@ public class Skeleton extends Monster
 	private static final int MIN_HEAL = 30;
 	private static final double HEAL_CHANCE = 3.; //30 percent
 	private static final double SPECIAL_CHANCE = 0.3;
-	private static final int SPECIAL_ATTACK_MAX = 100
+	private static final int SPECIAL_ATTACK_MAX = 100;
 	private static final int SPECIAL_ATTACK_MIN = 60;
 	
 	public Skeleton(Scanner user)
@@ -75,8 +75,8 @@ public class Skeleton extends Monster
 				//special move goes in here
 			int attack_val = Math.abs(rand.nextInt()) % (SPECIAL_ATTACK_MAX- SPECIAL_ATTACK_MIN) + SPECIAL_ATTACK_MIN + 1;
 
-			System.out.println(get_name() + "SKELETON SAYS ""THROW ME A BONE MAN"" AND TOSSES A RIB AT YOU FOR " + attack_val + " DAMAGE\n");
-			_hero.set_hit_points(_get_hit_points() - attack_val);
+			System.out.println(get_name() + "SKELETON SAYS 'THROW ME A BONE MAN' AND TOSSES A RIB AT YOU FOR " + attack_val + " DAMAGE\n");
+			enemy.set_hit_points(get_hit_points() - attack_val);
 		}
 		else
 		{
