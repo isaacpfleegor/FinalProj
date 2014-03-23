@@ -32,6 +32,7 @@ public class Game
 		}
 		else if ( resp.equalsIgnoreCase("Sorceress") )
 		{
+			System.out.println("We are in else for Sorceress");
 			_hero = new Sorceress(user);
 		}
 		else 

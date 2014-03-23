@@ -15,8 +15,8 @@ public class Sorceress extends Hero
 	public Sorceress(Scanner user)
 	{
 
-
 		super(user);
+		System.out.println("in Sorceress constructor");
 		set_hit_points(HP);
 		set_attack_speed(ATTACK_SPEED);
 		set_attack_chance(CHANCE_HIT);
@@ -59,20 +59,20 @@ public void attack(Monster enemy)
 public void special(Monster enemy)
 {
 	if(special_attempt()) //if returns true
-			{
-				int heal_val = Math.abs(rand.nextInt()) % (SPECIAL_DAMAGE_MAX - SPECIAL_DAMAGE_MIN) + SPECIAL_DAMAGE_MIN + 1;
+	{
+		int heal_val = Math.abs(rand.nextInt()) % (SPECIAL_DAMAGE_MAX - SPECIAL_DAMAGE_MIN) + SPECIAL_DAMAGE_MIN + 1;
 
-				System.out.println(get_name() + " uses SPECIAL MOVE -- HEAL and HEAL's SELF for " + heal_val + "\n");
-				set_hit_points(get_hit_points() + heal_val);
-			}
-			else
-			
-				System.out.println(get_name() + " healing spell FAILED! \n");
+		System.out.println(get_name() + " uses SPECIAL MOVE -- HEAL and HEAL's SELF for " + heal_val + "\n");
+		set_hit_points(get_hit_points() + heal_val);
+	}
+	else
+
+		System.out.println(get_name() + " healing spell FAILED! \n");
 }
 
-			
 
-		
+
+
 }//end class
 
 

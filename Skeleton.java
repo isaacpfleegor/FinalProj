@@ -75,7 +75,7 @@ public class Skeleton extends Monster
 				//special move goes in here
 			int attack_val = Math.abs(rand.nextInt()) % (SPECIAL_ATTACK_MAX- SPECIAL_ATTACK_MIN) + SPECIAL_ATTACK_MIN + 1;
 
-			System.out.println(get_name() + "SKELETON SAYS 'THROW ME A BONE MAN' AND TOSSES A RIB AT YOU FOR " + attack_val + " DAMAGE\n");
+			System.out.println(get_name() + " SAYS 'THROW ME A BONE MAN' AND TOSSES A RIB AT YOU FOR " + attack_val + " DAMAGE\n");
 			enemy.set_hit_points(get_hit_points() - attack_val);
 		}
 		else
