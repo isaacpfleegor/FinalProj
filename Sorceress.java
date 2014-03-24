@@ -16,7 +16,6 @@ public class Sorceress extends Hero
 	{
 
 		super(user);
-		System.out.println("in Sorceress constructor");
 		set_hit_points(HP);
 		set_attack_speed(ATTACK_SPEED);
 		set_attack_chance(CHANCE_HIT);

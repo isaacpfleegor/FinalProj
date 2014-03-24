@@ -19,7 +19,7 @@ public class Game
 
 	public void choose_hero(Scanner user)
 	{
-		System.out.println("Enter the type of character you want to play as");
+		System.out.println("Enter the type of character you want to play as: WARRIOR | THIEF | SORCERESS | OVERLORD");
 		String resp = user.nextLine();
 
 		if ( resp.equalsIgnoreCase("Warrior") )
@@ -32,8 +32,11 @@ public class Game
 		}
 		else if ( resp.equalsIgnoreCase("Sorceress") )
 		{
-			System.out.println("We are in else for Sorceress");
 			_hero = new Sorceress(user);
+		}
+		else if ( resp.equalsIgnoreCase("Overlord") )
+		{
+			_hero = new Overlord(user);
 		}
 		else 
 		{
@@ -46,63 +49,67 @@ public class Game
 	{
 		int rand_enemy = Math.abs(rand.nextInt() ) % 4;
 
-			if ( rand_enemy == OGRE )
-			{
-				_monster = new Ogre(user);
-			}
-			else if ( rand_enemy == GREMLIN )
-			{
-				_monster = new Gremlin(user);
-			}
-			else
-			{
-				_monster = new Skeleton(user);
-			}
-		}
-
-		public void play_round(Scanner user)
+		if ( rand_enemy == OGRE )
 		{
-			int round = 1;
-			boolean done = false;
+			_monster = new Ogre(user);
+		}
+		else if ( rand_enemy == GREMLIN )
+		{
+			_monster = new Gremlin(user);
+		}
+		else if ( rand_enemy == GREMLIN )
+		{
+			_monster = new Fish(user);
+		}
+		else
+		{
+			_monster = new Skeleton(user);
+		}
+	}
+
+	public void play_round(Scanner user)
+	{
+		int round = 1;
+		boolean done = false;
 		//methods may need to be redefined in their subclasses
 // && _hero.is_alive() && _monster.is_alive() 
-			while( !done)
-			{
-				System.out.println("Round " + round + "\n");
+		while( !done)
+		{
+			System.out.println("Round " + round + "\n");
 
-				_hero.take_turn(_monster, user);
-				_monster.take_turn(_hero, user);
+			_hero.take_turn(_monster, user);
+			_monster.take_turn(_hero, user);
 			// tells us the outcome of the round
-				System.out.println("\n");
+			System.out.println("\n");
 
-				System.out.println(_hero);
-				System.out.println(_monster);
+			System.out.println(_hero);
+			System.out.println(_monster);
 
-				round++;
+			round++;
 
-				System.out.println("\n");
+			System.out.println("\n");
 
 //if characters are alive, ask the user if they would like to play another round
-				if (_hero.is_alive() && _monster.is_alive())
-					done = ask_again(user); 
-				else
-					done = true;
-
-
-			}
-		}
-
-		public boolean ask_again(Scanner user)
-		{
-
-			System.out.print("Would you like to play another round?  Yes or No :");
-			String resp = user.nextLine();
-
-			if (resp.equalsIgnoreCase("yes"))
-				return false;
+			if (_hero.is_alive() && _monster.is_alive())
+				done = ask_again(user); 
 			else
-				return true;
+				done = true;
+
 
 		}
+	}
+
+	public boolean ask_again(Scanner user)
+	{
+
+		System.out.print("Would you like to play another round?  Yes or No :");
+		String resp = user.nextLine();
+
+		if (resp.equalsIgnoreCase("yes"))
+			return false;
+		else
+			return true;
 
 	}
+
+}
